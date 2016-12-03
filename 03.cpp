@@ -27,3 +27,35 @@ void AddToTail(ListNode **pHead, int value)
         pNode->next = pTmp;
     }
 }
+
+//链表删除某结点
+void RemoveNode(ListNode **pHead, int value)
+{
+    if(pHead == NULL || *pHead == NULL)
+        return;
+
+    ListNode *pToBeDeleted = NULL;
+    if((*pHead)->nValue == value)
+    {
+        pToBeDeleted = *pHead;
+        *pHead = (*pHead)->next;
+    }
+    else
+    {
+        ListNode *pNode = *pHead;
+        while(pNode->next != NULL && pNode->next->nValue != value)
+            pNode = pNode->next;
+
+        if(pNode->next != NULL && pNode->next->nValue == value)
+        {
+            pToBeDeleted = pNode->next;
+            pNode->next = pNode->next->next;
+        }
+    }
+
+    if(pToBeDeleted != NULL)
+    {
+        delete pToBeDeleted;
+        pToBeDeleted = NULL;
+    }
+}
