@@ -105,6 +105,33 @@ void combineSort(int *arr, int len)
     combine(arr, arr, arr+mid, len, mid, len-mid);
 }
 
+void shellSort(int *arr, int len)
+{
+    if(NULL == arr || len <= 1)
+        return;
+
+    for(int step=len/2; step>0; step/=2)//步长
+    {
+        for(int i=0; i<step; i++)//步长插入排序
+        {
+            for(int j=i+step; j<len; j+=step)
+            {
+                if(arr[j-step] > arr[j])
+                {
+                    int tmp = arr[j];
+                    int k = j - step;
+                    while(k >= 0 && arr[k] > tmp)
+                    {
+                        arr[k+step] = arr[k];
+                        k -= step;
+                    }
+                    arr[k+step] = tmp;
+                }
+            }
+        }
+    }
+}
+
 
 
 int main()
@@ -115,11 +142,11 @@ int main()
     int arr3[] = {0,0,2,2,1,10};
     int arr4[] = {0};
 
-    quickSort(arr, 0, sizeof(arr)/sizeof(int)-1);
-    quickSort(arr1, 0, sizeof(arr1)/sizeof(int)-1);
-    quickSort(arr2, 0, sizeof(arr2)/sizeof(int)-1);
-    quickSort(arr3, 0, sizeof(arr3)/sizeof(int)-1);
-    quickSort(arr4, 0, sizeof(arr4)/sizeof(int)-1);
+    /* quickSort(arr, 0, sizeof(arr)/sizeof(int)-1); */
+    /* quickSort(arr1, 0, sizeof(arr1)/sizeof(int)-1); */
+    /* quickSort(arr2, 0, sizeof(arr2)/sizeof(int)-1); */
+    /* quickSort(arr3, 0, sizeof(arr3)/sizeof(int)-1); */
+    /* quickSort(arr4, 0, sizeof(arr4)/sizeof(int)-1); */
 
     /* puppleSort(arr, sizeof(arr)/sizeof(int)); */
     /* puppleSort(arr1, sizeof(arr1)/sizeof(int)); */
@@ -138,6 +165,12 @@ int main()
     /* combineSort(arr2, sizeof(arr2)/sizeof(int)); */
     /* combineSort(arr3, sizeof(arr3)/sizeof(int)); */
     /* combineSort(arr4, sizeof(arr4)/sizeof(int)); */
+
+    shellSort(arr, sizeof(arr)/sizeof(int));
+    shellSort(arr1, sizeof(arr1)/sizeof(int));
+    shellSort(arr2, sizeof(arr2)/sizeof(int));
+    shellSort(arr3, sizeof(arr3)/sizeof(int));
+    shellSort(arr4, sizeof(arr4)/sizeof(int));
 
     for(int i=0; i<sizeof(arr)/sizeof(int); i++)
         cout<<arr[i]<<" ";
