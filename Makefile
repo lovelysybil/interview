@@ -1,4 +1,4 @@
-all: DeleteNode
+all: DeleteNode ReOrderEvenOdd
 
 DeleteNode: 13.o list.o
 	g++ -Wall 13.o list.o -o DeleteNode
@@ -9,5 +9,8 @@ DeleteNode: 13.o list.o
 list.o: list.cpp
 	g++ -c -Wall list.cpp
 
+ReOrderEvenOdd: 14.cpp
+	g++ -Wall 14.cpp -o ReOrderEvenOdd
+
 clean:
-	rm -rf *.o DeleteNode 
+	rm -rf *.o DeleteNode ReOrderEvenOdd a.out 
