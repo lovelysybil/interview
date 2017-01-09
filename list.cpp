@@ -1,4 +1,7 @@
 #include "iostream"
+#include "stdio.h"
+#include "stdlib.h"
+#include "string.h"
 #include "list.h"
 using namespace std;
 
@@ -51,51 +54,5 @@ void PrintListFromTail(ListNode *pHead)
 
     PrintListFromTail(pHead->pNext);
     cout << pHead->nValue << endl;
-}
-
-ListNode *FindTailKNode(ListNode *head, int k)
-{
-    if(head == NULL || k < 0)
-        return NULL;
-
-    ListNode *p = head;
-    ListNode *q = p;
-
-    for(int i=0; i<k; i++)
-    {
-        p = p->pNext;
-
-        if(p == NULL)
-            return NULL;
-    }
-
-    while(p->pNext != NULL)
-    {
-        p = p->pNext;
-        q = q->pNext;
-    }
-
-    return q;
-}
-
-int main()
-{
-    ListNode *head = NULL;
-    CreateList(head);
-
-    ListNode *tmp = NULL;
-    for(int i=0; i<5 ;i++)
-    {
-        if((tmp = FindTailKNode(head, i)) != NULL)
-        {
-            cout<<tmp->nValue<<endl;
-        }
-        else
-            cout<<"out range"<<endl;
-    }
-
-    DestoryList(head);
-
-    return 0;
 }
 
