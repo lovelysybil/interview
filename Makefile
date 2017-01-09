@@ -1,4 +1,4 @@
-all: DeleteNode ReOrderEvenOdd ConvertList FindTailKNode
+all: DeleteNode ReOrderEvenOdd ConvertList FindTailKNode MergeList
 
 DeleteNode: 13.o list.o
 	g++ -Wall 13.o list.o -o DeleteNode
@@ -8,6 +8,9 @@ FindTailKNode: 15.o list.o
 
 ConvertList: 16.o list.o
 	g++ -Wall 16.o list.o -o ConvertList
+
+MergeList: 17.o list.o
+	g++ -Wall 17.o list.o -o MergeList
 
 13.o: 13.cpp
 	g++ -c -Wall 13.cpp
@@ -19,4 +22,4 @@ ReOrderEvenOdd: 14.cpp
 	g++ -Wall 14.cpp -o ReOrderEvenOdd
 
 clean:
-	rm -rf *.o a.out DeleteNode ReOrderEvenOdd ConvertList FindTailKNode 
+	rm -rf *.o a.out DeleteNode ReOrderEvenOdd ConvertList FindTailKNode MergeList
