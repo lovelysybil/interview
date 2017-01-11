@@ -79,13 +79,14 @@ void PreOrder_iter(BinaryTreeNode *root)
                 stk.push(p->right);
             p = p->left;
         }
-        else if(stk.size() != 0)
+        else 
         {
+            if(stk.size() == 0)
+                break;
+
             p = stk.top();
             stk.pop();
         }
-        else
-            break;
     }
 }
 
@@ -103,40 +104,57 @@ void MidOrder_iter(BinaryTreeNode *root)
             stk.push(p);
             p = p->left;
         }
-        else if(stk.size() != 0)
+        else
         {
+            if(stk.size() == 0)
+                break;
+
             p = stk.top();
             stk.pop();
             cout<<p->nValue<<endl;
             p = p->right;
         }
-        else
-            break;
     }
 }
 
 void PostOrder_iter(BinaryTreeNode *root)
 {
+    if(NULL == root)
+        return;
 
+    BinaryTreeNode *p = root;
 
+    stack<BinaryTreeNode*> stk;
+    stack<int> stk_sign;
+    while(1)
+    {
+        if(p != NULL)
+        {
+            stk.push(p);
+            stk_sign.push(0);
+            p = p->left;
+        }
+        else
+        {
+            if(stk.size() == 0)
+                break;
 
-}
+            p = stk.top();
 
-int main()
-{
-    BinaryTreeNode *root = NULL;
-    CreateBinaryTree(root);
+            if(!stk_sign.top())
+            {
+                p = p->right;
 
-    PreOrder_rec(root);
-    cout<<"-----"<<endl;
-    PreOrder_iter(root);
-    cout<<"-----"<<endl;
-    MidOrder_rec(root);
-    cout<<"-----"<<endl;
-    MidOrder_iter(root);
-    cout<<"-----"<<endl;
-
-    DestoryBinaryTree(root);
-
-    return 0;
+                stk_sign.pop();
+                stk_sign.push(1);
+            }
+            else
+            {
+                cout<<p->nValue<<endl;
+                stk.pop();
+                stk_sign.pop();
+                p = NULL;
+            }
+        }
+    }
 }
