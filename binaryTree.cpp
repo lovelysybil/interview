@@ -4,6 +4,7 @@
 #include "string.h"
 #include "binaryTree.h"
 #include "stack"
+#include "queue"
 using namespace std;
 
 void CreateBinaryTree(BinaryTreeNode* &root)
@@ -157,4 +158,38 @@ void PostOrder_iter(BinaryTreeNode *root)
             }
         }
     }
+}
+
+void LevelOrder(BinaryTreeNode *root)
+{
+    if(NULL == root)
+        return;
+
+    queue<BinaryTreeNode*> que;
+    que.push(root);
+
+    while(!que.empty())
+    {
+        root = que.front();
+        que.pop();
+        
+        cout<<root->nValue<<endl;
+
+        if(root->left)
+            que.push(root->left);
+        
+        if(root->right)
+            que.push(root->right);
+    }
+}
+
+int main()
+{
+    BinaryTreeNode *root = NULL;
+    CreateBinaryTree(root);
+
+    LevelOrder(root);
+    DestoryBinaryTree(root);
+
+    return 0;
 }

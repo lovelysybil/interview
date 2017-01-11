@@ -1,4 +1,4 @@
-all: DeleteNode ReOrderEvenOdd ConvertList FindTailKNode MergeList HasSubTree
+all: DeleteNode ReOrderEvenOdd ConvertList FindTailKNode MergeList HasSubTree MirrorTree
 
 DeleteNode: 13.o list.o
 	g++ -Wall 13.o list.o -o DeleteNode
@@ -15,6 +15,9 @@ MergeList: 17.o list.o
 HasSubTree: 18.o binaryTree.o
 	g++ -Wall 18.o binaryTree.o -o HasSubTree
 
+MirrorTree: 19.o binaryTree.o
+	g++ -Wall 19.o binaryTree.o -o MirrorTree
+
 list.o: list.cpp
 	g++ -c -Wall list.cpp
 
@@ -25,4 +28,4 @@ ReOrderEvenOdd: 14.cpp
 	g++ -Wall 14.cpp -o ReOrderEvenOdd
 
 clean:
-	rm -rf *.o a.out DeleteNode ReOrderEvenOdd ConvertList FindTailKNode MergeList HasSubTree
+	rm -rf *.o a.out DeleteNode ReOrderEvenOdd ConvertList FindTailKNode MergeList HasSubTree MirrorTree

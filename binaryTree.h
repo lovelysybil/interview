@@ -16,3 +16,4 @@ void PostOrder_rec(const BinaryTreeNode *root);
 void PreOrder_iter(BinaryTreeNode *root);
 void MidOrder_iter(BinaryTreeNode *root);
 void PostOrder_iter(BinaryTreeNode *root);
+void LevelOrder(BinaryTreeNode *root);
