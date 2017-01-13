@@ -182,14 +182,3 @@ void LevelOrder(BinaryTreeNode *root)
             que.push(root->right);
     }
 }
-
-int main()
-{
-    BinaryTreeNode *root = NULL;
-    CreateBinaryTree(root);
-
-    LevelOrder(root);
-    DestoryBinaryTree(root);
-
-    return 0;
-}
