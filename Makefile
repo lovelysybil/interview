@@ -1,4 +1,4 @@
-all: DeleteNode ReOrderEvenOdd ConvertList FindTailKNode MergeList HasSubTree MirrorTree ConvertToDlist FindPath Permutation
+all: DeleteNode ReOrderEvenOdd ConvertList FindTailKNode MergeList HasSubTree MirrorTree ConvertToDlist FindPath Permutation DeleteDuplication
 
 DeleteNode: 13.o list.o
 	g++ -Wall 13.o list.o -o DeleteNode
@@ -11,6 +11,9 @@ ConvertList: 16.o list.o
 
 MergeList: 17.o list.o
 	g++ -Wall 17.o list.o -o MergeList
+
+DeleteDuplication: 57.o list.o
+	g++ -Wall 57.o list.o -o DeleteDuplication
 
 HasSubTree: 18.o binaryTree.o
 	g++ -Wall 18.o binaryTree.o -o HasSubTree
@@ -37,4 +40,4 @@ Permutation: 28.cpp
 	g++ -Wall 28.cpp -o Permutation
 
 clean:
-	rm -rf *.o a.out DeleteNode ReOrderEvenOdd ConvertList FindTailKNode MergeList HasSubTree MirrorTree ConvertToDlist FindPath Permutation
+	rm -rf *.o a.out DeleteNode ReOrderEvenOdd ConvertList FindTailKNode MergeList HasSubTree MirrorTree ConvertToDlist FindPath Permutation DeleteDuplication
