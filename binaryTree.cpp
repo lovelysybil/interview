@@ -172,12 +172,12 @@ void LevelOrder(BinaryTreeNode *root)
     {
         root = que.front();
         que.pop();
-        
+
         cout<<root->nValue<<endl;
 
         if(root->left)
             que.push(root->left);
-        
+
         if(root->right)
             que.push(root->right);
     }
@@ -192,7 +192,7 @@ void PrintBinaryTreeByLevel(BinaryTreeNode *root)
     que.push(root);
     int nGoToNextLine = 1;
     int nNextLevelCount = 0;
-    
+
     while(que.size())
     {
         root = que.front();
@@ -211,12 +211,50 @@ void PrintBinaryTreeByLevel(BinaryTreeNode *root)
             que.push(root->right);
             nNextLevelCount++;
         }
-    
+
         if(nGoToNextLine == 0)
         {
             cout<<endl;
             nGoToNextLine = nNextLevelCount;
             nNextLevelCount = 0;
+        }
+    }
+}
+
+void PrintBinaryTreeByLevelLR(BinaryTreeNode *root)
+{
+    if(root == NULL)
+        return;
+
+    stack<BinaryTreeNode*> stk1;
+    stack<BinaryTreeNode*> stk2;
+
+    stk1.push(root);
+
+    while(stk1.size()>0 || stk2.size()>0)
+    {
+        while(stk1.size())
+        {
+            root = stk1.top();
+            cout<<root->nValue<<endl;
+            if(root->left)
+                stk2.push(root->left);
+            if(root->right)
+                stk2.push(root->right);
+
+            stk1.pop();
+        }
+
+        while(stk2.size())
+        {
+            root = stk2.top();
+            cout<<root->nValue<<endl;
+            if(root->right)
+                stk1.push(root->right);
+            if(root->left)
+                stk1.push(root->left);
+
+            stk2.pop();
         }
     }
 }

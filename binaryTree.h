@@ -18,3 +18,4 @@ void MidOrder_iter(BinaryTreeNode *root);
 void PostOrder_iter(BinaryTreeNode *root);
 void LevelOrder(BinaryTreeNode *root);
 void PrintBinaryTreeByLevel(BinaryTreeNode *root);
+void PrintBinaryTreeByLevelLR(BinaryTreeNode *root);
