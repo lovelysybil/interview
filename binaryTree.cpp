@@ -183,13 +183,40 @@ void LevelOrder(BinaryTreeNode *root)
     }
 }
 
-int main()
+void PrintBinaryTreeByLevel(BinaryTreeNode *root)
 {
-    BinaryTreeNode *root = NULL;
-    CreateBinaryTree(root);
+    if(root == NULL)
+        return;
 
-    LevelOrder(root);
-    DestoryBinaryTree(root);
+    queue<BinaryTreeNode*> que;
+    que.push(root);
+    int nGoToNextLine = 1;
+    int nNextLevelCount = 0;
+    
+    while(que.size())
+    {
+        root = que.front();
+        que.pop();
+        cout<<root->nValue<<" ";
+        nGoToNextLine--;
 
-    return 0;
+        if(root->left)
+        {
+            que.push(root->left);
+            nNextLevelCount++;
+        }
+
+        if(root->right)
+        {
+            que.push(root->right);
+            nNextLevelCount++;
+        }
+    
+        if(nGoToNextLine == 0)
+        {
+            cout<<endl;
+            nGoToNextLine = nNextLevelCount;
+            nNextLevelCount = 0;
+        }
+    }
 }
