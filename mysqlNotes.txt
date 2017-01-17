@@ -1,0 +1,7 @@
+管理 mysql 命令
+    USE Databasename : 用于选择在MySQL工作区指定的数据库。
+    SHOW DATABASES: 列出了MySQL数据库管理系统中的所有可访问的数据库。
+    SHOW TABLES: 显示已经选择数据库中的表的命令。
+    SHOW COLUMNS FROM tablename: 显示属性，属性类型，关键信息，NULL是否被允许，默认值和其它的表信息。
+    SHOW INDEX FROM tablename: 提供所有指标的详细信息表，其中包括PRIMARY KEY.
+
