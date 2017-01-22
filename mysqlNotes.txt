@@ -5,3 +5,84 @@
     SHOW COLUMNS FROM tablename: 显示属性，属性类型，关键信息，NULL是否被允许，默认值和其它的表信息。
     SHOW INDEX FROM tablename: 提供所有指标的详细信息表，其中包括PRIMARY KEY.
 
+Inner Join:
+SELECT Persons.LastName, Persons.FirstName, Orders.OrderNo
+    FROM Persons
+    INNER JOIN Orders
+    ON Persons.Id_P=Orders.Id_P
+    ORDER BY Persons.LastName
+
+Left Join:
+SELECT column_name(s)
+    FROM table_name1
+    LEFT JOIN table_name2 
+    ON table_name1.column_name=table_name2.column_name
+
+Right Join:
+SELECT Persons.LastName, Persons.FirstName, Orders.OrderNo
+    FROM Persons
+    RIGHT JOIN Orders
+    ON Persons.Id_P=Orders.Id_P
+    ORDER BY Persons.LastName
+
+Full Join:
+SELECT Persons.LastName, Persons.FirstName, Orders.OrderNo
+    FROM Persons
+    RIGHT JOIN Orders
+    ON Persons.Id_P=Orders.Id_P
+    ORDER BY Persons.LastName
+
+Union/Union ALL:
+SELECT column_name(s) FROM table_name1
+UNION
+SELECT column_name(s) FROM table_name2
+
+SELECT column_name(s) FROM table_name1
+UNION ALL
+SELECT column_name(s) FROM table_name2
+
+SQL FOREIGN KEY 约束
+一个表中的 FOREIGN KEY 指向另一个表中的 PRIMARY KEY。
+
+CREATE TABLE Orders
+(
+ Id_O int NOT NULL,
+ OrderNo int NOT NULL,
+ Id_P int,
+ PRIMARY KEY (Id_O),
+ FOREIGN KEY (Id_P) REFERENCES Persons(Id_P)
+ )
+
+如果需要命名 FOREIGN KEY 约束，以及为多个列定义 FOREIGN KEY 约束
+CREATE TABLE Orders
+(
+ Id_O int NOT NULL,
+ OrderNo int NOT NULL,
+ Id_P int,
+ PRIMARY KEY (Id_O),
+ CONSTRAINT fk_PerOrders FOREIGN KEY (Id_P)
+ REFERENCES Persons(Id_P)
+ )
+
+ALTER TABLE Orders
+ADD CONSTRAINT fk_PerOrders
+FOREIGN KEY (Id_P)
+REFERENCES Persons(Id_P)
+
+ALTER TABLE Orders
+DROP CONSTRAINT fk_PerOrders
+
+SELECT Customer,SUM(OrderPrice) FROM Orders
+WHERE Customer='Bush' OR Customer='Adams'
+GROUP BY Customer
+HAVING SUM(OrderPrice)>1500
+
+Index:
+CREATE INDEX index_name
+ON table_name (column_name)
+
+CREATE UNIQUE INDEX index_name
+ON table_name (column_name)
+
+CREATE INDEX PersonIndex
+ON Person (LastName, FirstName)
